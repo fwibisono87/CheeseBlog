@@ -36,5 +36,24 @@ def newBlog(request):
     return render(request, 'newblog.html', context)
 
 
+def editForm(request, blog_id):
+    blog = Blog.objects.get(pk=blog_id)
+    if request.method == "POST":
+        form = BlogForm(request.POST or None)
+        if form.is_valid():
+            print("form is valid!")
+            edit = form.save(commit=False)
+            blog.title = edit.title
+            blog.content = edit.content
+            blog.save()
+            return HttpResponseRedirect('/my')
+        else:
+            print("form invalid")
+            print(form.errors)
+    else:
+        form = BlogForm(initial={'title': blog.title, 'content': blog.content, 'slug': blog.slug})
+    context = {'form': form, 'blog': blog}
+    return render(request, 'newblog.html', context)
+
 def isDone(request):
     return render(request, "isdone.html")
