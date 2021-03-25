@@ -4,6 +4,9 @@
     <div class="center-content">
     <form method="post">
         {% csrf_token %}
+        {% if blog %}
+            For now, if you are editing a blog post, you MUST change the slug to something else (you can change it back later :D)
+        {% endif %}
         <table style="margin-left: auto; margin-right: auto">
             <tr>
                 <td>Title</td>
@@ -23,12 +26,11 @@
             <tr>
                 <td colspan="3">You can make a custom slug here (Alphanumeric and dashes'-' only, please!</td>
             </tr>
-            <tr>
-                <td colspan="3">After submitting, if you get returned to this page, you probably picked a slug that already exists!</td>
-            </tr>
-            <tr>
-                <td colspan="3">Try another slug or use the random slug instead!</td>
-            </tr>
+            {% if form.errors %}
+                {% for error in form.errors %}
+                    <th colspan="3">{{ error }} is invalid!</th>
+                {% endfor %}
+            {% endif %}
         </table>
         <button type="submit">Send!</button>
     </form>
