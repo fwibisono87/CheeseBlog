@@ -8,3 +8,4 @@ selenium==3.5.0
 whitenoise==5.0.1
 coverage >= 5.3
 mock >= 1
+psycopg2
