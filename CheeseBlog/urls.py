@@ -28,5 +28,5 @@ urlpatterns = [
     url(r"accounts/", include("django.contrib.auth.urls")),
     url("newblog/",  newBlog),
     url("newblog/isDone", isDone),
-    path('<slug:slug>/', BlogDetail.as_view(), name="post_detail")
+    path('<slug:slug>/', BlogDetail, name="post_detail")
 ]

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Blog(models.Model):
     class Meta:
-        ordering = ['-created_on']
+        ordering = ['created_on']
 
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -14,4 +14,16 @@ class Blog(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self): return self.title
+
+
+class Comment(models.Model):
+    class Meta:
+        ordering = ['created_on']
+
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=80)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self): return 'Comment {} by {}'.format(self.body, self.name)
 # Create your models here.

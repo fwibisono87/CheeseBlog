@@ -26,6 +26,7 @@
             {% endif %}
             {% if user.is_authenticated %}
                 <a href="/my" class="navbarlink">My Account</a>
+                <a href="/newblog" class="navbarlink">New Blog</a>
                 <a href="/accounts/logout" class="navbarlink">Logout</a>
                 <span>Hello, {{ user.username }}!</span>
             {% else %}

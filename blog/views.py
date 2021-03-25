@@ -1,16 +1,32 @@
 from django.views import generic
 from .models import Blog
-from .forms import BlogForm
+from .forms import BlogForm, CommentForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 import slugify
 import random, string
 
 
-class BlogDetail(generic.DetailView):
-    model = Blog
+def BlogDetail(request, slug):
     template_name = 'blogdetail.html'
+    blog = get_object_or_404(Blog, slug=slug)
+    comments = Blog.comments
+    new_comment = None
+
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.blog = blog
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+    return render(request, template_name, {'blog': blog,
+                                           'comments': comments,
+                                           'new_comment': new_comment,
+                                           'comment_form': comment_form})
 
 
 @login_required
@@ -38,3 +54,4 @@ def newBlog(request):
 
 def isDone(request):
     return render(request, "isdone.html")
+
