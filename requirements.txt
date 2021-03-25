@@ -5,7 +5,7 @@ pillow>=5.4.*
 psycopg2-binary==2.8.4
 six==1.10.0
 selenium==3.5.0
-whitenoise==5.0.1
+whitenoise
 coverage >= 5.3
 mock >= 1
 psycopg2
