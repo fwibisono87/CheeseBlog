@@ -10,14 +10,13 @@
         {% if posts %}
             {% for post in posts %}
                 <div class="post-card">
-                    <div class="metadata">
-                        <h1>{{ post.title }}</h1>
-                        <span class="byline">Written by {{ post.author }}, at {{ post.created_on }} UTC<br>Last updated on {{ post.updated_on }} UTC</span>
-                    </div>
-                    <div class="post-content">
-                        <p>{{ post.content|linebreaks }}</p>
-                    </div>
+                    <a href="{% url 'post_detail' post.slug %}">
+                        <h2>{{ post.title }}</h2>
+                    </a>
+                    <span>by {{ post.author }} on {{ post.created_on }}</span>
                 </div>
+                You have seen all posts!<br>
+                Why not <a href="">create one of your own?</a>
             {% endfor %}
         {% else %}
             No posts so far!<br>

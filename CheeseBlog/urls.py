@@ -18,12 +18,13 @@ from django.urls import path
 from home import views as homeviews
 from custom_auth import views as authviews
 from django.conf.urls import include, url
-
+from blog.views import BlogDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeviews.home),
     path('my/', authviews.dashboard),
     path('register/', authviews.register),
-    url(r"accounts/", include("django.contrib.auth.urls"))
+    url(r"accounts/", include("django.contrib.auth.urls")),
+    path('<slug:slug>/', BlogDetail.as_view(), name="post_detail")
 ]

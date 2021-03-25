@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from django.template.context_processors import request
-
+from django.views import generic
 from .models import Blog
 
 
-# Create your views here.
+class BlogDetail(generic.DetailView):
+    model = Blog
+    template_name = 'blogdetail.html'

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="post-card">
+            <div class="metadata">
+                <h1>{{ object.title }}</h1>
+                <span class="byline">Written by {{ object.author }}, at {{ object.created_on }} UTC<br>Last updated on {{ object.updated_on }} UTC</span>
+            </div>
+            <div class="post-content">
+                <p>{{ object.content|linebreaks }}</p>
+            </div>
+        </div>
+        <div class="center-content">
+            <a href="/"><button>Go home</button></a>
+        </div>
+    </div>
+{% endblock %}
