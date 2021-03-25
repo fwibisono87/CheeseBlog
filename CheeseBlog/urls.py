@@ -18,7 +18,7 @@ from django.urls import path
 from home import views as homeviews
 from custom_auth import views as authviews
 from django.conf.urls import include, url
-from blog.views import BlogDetail
+from blog.views import BlogDetail, newBlog, isDone
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,7 @@ urlpatterns = [
     path('my/', authviews.dashboard),
     path('register/', authviews.register),
     url(r"accounts/", include("django.contrib.auth.urls")),
+    url("newblog/",  newBlog),
+    url("newblog/isDone", isDone),
     path('<slug:slug>/', BlogDetail.as_view(), name="post_detail")
 ]

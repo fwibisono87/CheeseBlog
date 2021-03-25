@@ -9,3 +9,4 @@ whitenoise
 coverage >= 5.3
 mock >= 1
 psycopg2
+slugify~=0.0.1
