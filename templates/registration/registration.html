@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title%}Registration{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <div class="center-content">
+            <form method="post">
+                {% csrf_token %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <table style="margin-left: auto; margin-right: auto">
+                    <tr>
+                        <td>Username</td>
+                        <td>:</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><i>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only</i></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>{{ form.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td>:</td>
+                        <td>{{ form.first_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>:</td>
+                        <td>{{ form.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>:</td>
+                        <td>{{ form.password1 }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><i>Your password can't be similar to your username. It has to be at least 8 characters.</i></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><i>It can't be a commonly used password. It can't be entirely numeric.</i></td>
+                    </tr>
+                    <tr>
+                        <td>Password Confirmation</td>
+                        <td>:</td>
+                        <td>{{ form.password2 }}</td>
+                    </tr>
+                </table>
+            <br>
+            <input type="submit" value="Register">
+            </form>
+            <p>Already have an account?</p>
+            <a href="/accounts/login"><button>Login</button></a>
+        </div>
+    {% endblock %}
+</body>
+</html>

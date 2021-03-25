@@ -11,6 +11,10 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 300px);
 }
+.center-content{
+    text-align: center;
+    align-content: center;
+}
 .content_box{
     padding: 10px;
     margin-top: 10px;
