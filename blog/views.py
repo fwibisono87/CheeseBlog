@@ -55,5 +55,19 @@ def editForm(request, blog_id):
     context = {'form': form, 'blog': blog}
     return render(request, 'newblog.html', context)
 
+
+def deleteBlog(request, blog_id):
+    target_blog = Blog.objects.get(pk=blog_id)
+    if target_blog:
+        if target_blog.author == request.user:
+            target_blog.delete()
+            context = {'status': 'done'}
+        else:
+            context = {'status': 'not_authorized'}
+    else:
+        context = {'status': 'not_exist'}
+    return render(request, 'deleted.html', context=context)
+
+
 def isDone(request):
     return render(request, "isdone.html")

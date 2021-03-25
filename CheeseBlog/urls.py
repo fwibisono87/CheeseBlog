@@ -18,7 +18,7 @@ from django.urls import path
 from home import views as homeviews
 from custom_auth import views as authviews
 from django.conf.urls import include, url
-from blog.views import BlogDetail, newBlog, isDone, editForm
+from blog.views import BlogDetail, newBlog, isDone, editForm, deleteBlog
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +29,6 @@ urlpatterns = [
     url("newblog/",  newBlog),
     url("newblog/isDone", isDone),
     path('<slug:slug>/', BlogDetail.as_view(), name="post_detail"),
-    path("edit/<int:blog_id>", editForm, name="edit")
+    path("edit/<int:blog_id>", editForm, name="edit"),
+    path('delete/<int:blog_id>', deleteBlog, name="delete")
 ]

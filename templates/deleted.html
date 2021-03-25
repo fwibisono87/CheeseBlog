@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Deletion{% endblock %}
+
+{% block body %}
+    {% if status == "done" %}
+        <div>
+            <h1>Deleted!</h1>
+            <h2>Hope that was what you're trying to do, because there is no turning back now!</h2>
+        </div>
+    {% endif %}
+    {% if status == "not_authorized" %}
+        <div>
+            <h1>Nope!</h1>
+            <h2>That post ain't yours. How did you even get here?</h2>
+        </div>
+    {% endif %}
+    {% if status == "not_exist" %}
+        <div>
+            <h1>It doesn't exist</h1>
+            <h2>you can't kill things that are never alive 0_0</h2>
+        </div>
+    {% endif %}
+{% endblock %}
