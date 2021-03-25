@@ -1,0 +1,51 @@
+.grid-container{
+    display: grid;
+    margin: 1rem;
+    padding: 1rem;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
+    grid-gap: 0.1em;
+    border-radius: 10px;
+}
+.element{
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 300px);
+}
+.content_box{
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: fill;
+    margin-left: fill;
+    text-align: center;
+}
+
+body{
+    background-color: black;
+    color: #e0e0e0;
+    font-family: Roboto;
+}
+h1{
+    font-family: Poppins;
+}
+.logolink{
+    color: orange;
+    font-size: 200%;
+    font-size: 1rem;
+}
+.logolink .h1:hover{
+    background-color: darkorange;
+}
+.navbarlink{
+    color: #e0e0e0;
+    font-family: "Open Sans";
+    padding: 0.25rem 1rem;
+    font-size: 1em;
+}
+.navbarlink:hover{
+    background-color: #e0e0e0;
+    color: black;
+}
+.container{
+    background-color: #e0e0e0;
+    padding: 0.125em;
+}

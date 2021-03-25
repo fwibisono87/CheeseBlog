@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Base Template
+        {% endblock %}
+    </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&family=Roboto:ital@0;1&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div class="grid-container">
+        <div class="navbar">
+            <a href="/" class="logolink">
+                <h1>
+                    <span style="color: darkorange">Cheese</span><span style="color: #e0e0e0">Blog</span>
+                </h1>
+            </a>
+            {% if user.is_authenticated == False %}
+                <a href="/account" class="navbarlink">Login / Register</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <a href="/account" class="navbarlink">My Account</a>
+                <a href="/account" class="navbarlink">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="container">
+        <div class="grid-container" style="background-color: black">
+            {% block body %}
+                test
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
