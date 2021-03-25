@@ -1,11 +1,13 @@
-from django.views import generic
-from .models import Blog
-from .forms import BlogForm
+import random
+import string
+
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-import slugify
-import random, string
+from django.views import generic
+
+from .forms import BlogForm
+from .models import Blog
 
 
 class BlogDetail(generic.DetailView):

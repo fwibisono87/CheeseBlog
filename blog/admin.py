@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Blog
 
+
 class BlogAdmin(admin.ModelAdmin):
     ##fields displayed on admmin
     list_display = ('title', 'slug', 'created_on')
@@ -8,6 +9,7 @@ class BlogAdmin(admin.ModelAdmin):
     search_fields = ['title', 'content']
     ##auto-create slug field with title
     prepopulated_fields = {'slug': ('title',)}
+
 
 admin.site.register(Blog, BlogAdmin)
 # Register your models here.
