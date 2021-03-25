@@ -11,9 +11,6 @@
                 <td>{{ form.title }}</td>
             </tr>
             <tr>
-                <td colspan="3">Attention! You cannot use numbers in your title!</td>
-            </tr>
-            <tr>
                 <td>Content</td>
                 <td>:</td>
                 <td>{{ form.content }}</td>
@@ -25,6 +22,12 @@
             </tr>
             <tr>
                 <td colspan="3">You can make a custom slug here</td>
+            </tr>
+            <tr>
+                <td colspan="3">After submitting, if you get returned to this page, you probably picked a slug that allready exists!</td>
+            </tr>
+            <tr>
+                <td colspan="3">Try another slug or use the random slug instead!</td>
             </tr>
         </table>
         <button type="submit">Send!</button>
