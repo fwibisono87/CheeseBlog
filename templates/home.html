@@ -3,5 +3,25 @@
     CheeseBlog
 {% endblock %}
 {% block body %}
-    Welcome!
+    <div class="center-content">
+        <h2>
+            Welcome to the CheeseBlog!
+        </h2>
+        {% if posts %}
+            {% for post in posts %}
+                <div class="post-card">
+                    <div class="metadata">
+                        <h1>{{ post.title }}</h1>
+                        <span class="byline">Written by {{ post.author }}, at {{ post.created_on }} UTC<br>Last updated on {{ post.updated_on }} UTC</span>
+                    </div>
+                    <div class="post-content">
+                        <p>{{ post.content|linebreaks }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            No posts so far!<br>
+            Why not <a href="">create one of your own?</a>
+        {% endif %}
+    </div>
 {% endblock %}

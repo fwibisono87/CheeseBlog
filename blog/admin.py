@@ -3,9 +3,7 @@ from .models import Blog
 
 class BlogAdmin(admin.ModelAdmin):
     ##fields displayed on admmin
-    list_display = ('title', 'slug', 'status','created_on')
-    ##available filters
-    list_filter = ("status",)
+    list_display = ('title', 'slug', 'created_on')
     ##searchable fields
     search_fields = ['title', 'content']
     ##auto-create slug field with title

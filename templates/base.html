@@ -27,9 +27,9 @@
             {% if user.is_authenticated %}
                 <a href="/my" class="navbarlink">My Account</a>
                 <a href="/accounts/logout" class="navbarlink">Logout</a>
-                <p>Hello, {{ user.username }}!</p>
+                <span>Hello, {{ user.username }}!</span>
             {% else %}
-                <p>Hello!</p>
+                <span>Hello!</span>
             {% endif %}
 
         </div>

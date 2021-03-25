@@ -53,3 +53,25 @@ h1{
     background-color: #e0e0e0;
     padding: 0.125em;
 }
+.post-card{
+    background-color: #870000;
+    padding: 2em;
+    margin: 2em;
+    text-align: revert;
+    align-content: revert;
+
+}
+.post-card > metadata{
+    text-align: left;
+}
+.post-card > h1{
+    text-align: left;
+}
+
+.post-card .byline{
+    text-align: left;
+    font-family: Roboto;
+    display: inline;
+    font-size: 0.8rem;
+    font-style: italic ;
+}
