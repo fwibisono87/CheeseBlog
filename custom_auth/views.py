@@ -3,11 +3,14 @@ from django.contrib.auth import login
 from django.urls import reverse
 from django.shortcuts import redirect, render
 from custom_auth.forms import CustomUserCreationForm
+from blog.views import Blog
 
 
 # Create your views here.
 def dashboard(request):
-    return render(request, "registration/mydashboard.html")
+    blog_posts = list(Blog.objects.filter(author=request.user))
+    response = {'posts': set(blog_posts)}
+    return render(request, "registration/mydashboard.html", response)
 
 
 def register(request):

@@ -10,8 +10,30 @@
 <body>
     {% block body %}
         {% if user.is_authenticated %}
-            {{ user.username }}
-            <a href="/accounts/logout"><button>Logout</button></a>
+            <div>
+                <h2>Welcome back, {{ user.username }}!</h2>
+                <a href="/accounts/logout"><button>Logout</button></a>
+                {% if posts %}
+                    <div class="post-card">
+                        <h3>Here are all your posts in the CheeseBlog!</h3>
+                        <table style="width: 100%">
+                            <tr>
+                                <th>Title</th>
+                                <th>Created on</th>
+                                <th>Last updated on</th>
+                            </tr>
+                            {% for post in posts %}
+                                <tr>
+                                    <td><a href="/{{ post.slug }}">{{ post.title }}</a></td>
+                                    <td>{{ post.created_on }} UTC</td>
+                                    <td>{{ post.updated_on }} UTC</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                {% else %}
+                {% endif %}
+            </div>
         {% else %}
             <div class="center-content">
                 <p>Hi! It seems that you haven't logged in yet!</p>

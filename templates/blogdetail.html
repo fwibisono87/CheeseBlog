@@ -13,6 +13,11 @@
             </div>
         </div>
         <div class="center-content">
+            {% if request.user == object.author %}
+                <a href="/my"><button>Go to my dashboard</button></a>
+                <a href=""><button>Delete</button></a>
+                <a href=""><button>Edit</button></a>
+            {% endif %}
             <a href="/"><button>Go home</button></a>
         </div>
     </div>
