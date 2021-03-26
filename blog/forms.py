@@ -11,6 +11,7 @@ class BlogForm(ModelForm):
             'slug'
         )
 
+
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
