@@ -21,10 +21,14 @@
             <hr>
         <h3>Comments</h3>
             {% if object.comments %}
+                <div class="comment-card">
+                    <hr>
                 {% for comment in object.comments.all %}
-                    <i>{{ comment.author }} at {{ comment.created_date }} UTC says </i>
-                    <p>{{ comment.text|linebreaks }}</p>
+                        <span class="byline">{{ comment.author }} at {{ comment.created_date }} UTC says </span>
+                        <p>{{ comment.text|linebreaks }}</p>
+                    <hr>
                 {% endfor %}
+                </div>
             {% else %}
             <p>No comments so far!</p>
             {% endif %}

@@ -40,6 +40,7 @@ body{
     background-color: black;
     color: #e0e0e0;
     font-family: Roboto;
+    font-size: 100%;
 }
 h1{
     font-family: Poppins;
@@ -62,10 +63,6 @@ h1{
     background-color: #e0e0e0;
     color: black;
 }
-.container{
-    background-color: #e0e0e0;
-    padding: 0.125em;
-}
 .post-card{
     background-color: #4f0202;
     padding: 2em;
@@ -74,6 +71,16 @@ h1{
     align-content: revert;
 
 }
+.comment-card{
+    background-color: #4f0202;
+    padding: 2em;
+    margin: 2em;
+}
+.comment-card .byline{
+    font-size: 0.8em;
+    font-style: italic;
+}
+
 .post-card > metadata{
     text-align: left;
 }
