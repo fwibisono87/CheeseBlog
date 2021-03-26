@@ -10,7 +10,9 @@ class BlogAdmin(admin.ModelAdmin):
     ##auto-create slug field with title
     prepopulated_fields = {'slug': ('title',)}
 
-
+class CommentAdmin(admin.ModelAdmin):
+    ##fields displayed on admmin
+    list_display = ('post', 'author', 'created_date', 'text')
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(Comment)
+admin.site.register(Comment, CommentAdmin)
 # Register your models here.

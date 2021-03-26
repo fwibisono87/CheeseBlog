@@ -3,10 +3,10 @@ import string
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 
-from .forms import BlogForm
+from .forms import BlogForm, CommentForm
 from .models import Blog
 
 
@@ -48,7 +48,7 @@ def editForm(request, blog_id):
             blog.title = edit.title
             blog.content = edit.content
             blog.save()
-            return HttpResponseRedirect('/my')
+            return redirect('post_detail', blog.slug)
         else:
             print("form invalid")
             print(form.errors)
@@ -69,6 +69,24 @@ def deleteBlog(request, blog_id):
     else:
         context = {'status': 'not_exist'}
     return render(request, 'deleted.html', context=context)
+
+
+def addCommentToBlog(request, pk):
+    blog = get_object_or_404(Blog, pk=pk)
+    if request.method == "POST":
+        print("in post!")
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            print("form valid")
+            comment = form.save(commit=False)
+            comment.post = blog
+            comment.save()
+            return redirect('post_detail', blog.slug)
+        else:
+            print("form invalid")
+    else:
+        form = CommentForm
+    return render(request, 'newComment.html', {'form': form})
 
 
 def isDone(request):
