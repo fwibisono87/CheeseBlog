@@ -18,6 +18,17 @@
                 <a href="/delete/{{ object.pk }}"><button>Delete</button></a>
                 <a href="/edit/{{ object.pk }}"><button>Edit</button></a>
             {% endif %}
+            <hr>
+        <h3>Comments</h3>
+            {% if object.comments %}
+                {% for comment in object.comments.all %}
+                    <i>{{ comment.author }} at {{ comment.created_date }} UTC says </i>
+                    <p>{{ comment.text|linebreaks }}</p>
+                {% endfor %}
+            {% else %}
+            <p>No comments so far!</p>
+            {% endif %}
+            <hr>
             <a href="/"><button>Go home</button></a>
         </div>
     </div>

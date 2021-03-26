@@ -14,4 +14,19 @@ class Blog(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self): return self.title
+
+class Comment(models.Model):
+    post = models.ForeignKey('Blog', on_delete=models.CASCADE, related_name='comments')
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField()
+    approved_comment = models.BooleanField(default=False)
+    #a way to moderate comments. each comment has to be activated by the admin to show up in the site
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text
 # Create your models here.
