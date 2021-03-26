@@ -13,7 +13,8 @@ As of the current deployed state, requirements 1 through 4 have been shipped.
 
 This project utilizes the Django Framework
 
-####*this project is deployed at [cheeseblog.franciswibisono.com](http://cheeseblog.franciswibisono.com)*
+*this project is deployed at [cheeseblog.franciswibisono.com](http://cheeseblog.franciswibisono.com)*<br>
+*this project has a Git repository hosted at [https://github.com/fwibisono87/CheeseBlog](https://github.com/fwibisono87/CheeseBlog)*
 
 ##Installation Instructions
 You can just use the deployed one, but you might be interested in hosting your own instance of CheeseBlog (for whatever reason, lol.) If so, follow the following (heheh) instructions!
